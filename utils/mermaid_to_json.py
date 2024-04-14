@@ -1237,5 +1237,3 @@ def execute(file_name):
     json_output = convert_to_json(entities, relationships)    
     with open('dbt_def.json', 'w') as f:
         f.write(json_output)
-
-execute('../erd.md')
