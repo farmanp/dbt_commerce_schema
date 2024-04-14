@@ -1,0 +1,4502 @@
+version: 2
+models:
+- name: orders
+  description: Table containing details for orders.
+  columns:
+  - name: order_id
+    description: The order_id of the orders.
+    tests:
+    - not_null
+    - unique
+  - name: customer_id
+    description: The customer_id of the orders.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: market_id
+    description: The market_id of the orders.
+    tests:
+    - not_null
+    - unique
+  - name: store_id
+    description: The store_id of the orders.
+    tests:
+    - not_null
+    - unique
+  - name: payment_id
+    description: The payment_id of the orders.
+    tests:
+    - not_null
+    - unique
+  - name: order_created_datetime
+    description: The order_created_datetime of the orders.
+    tests:
+    - not_null
+  - name: order_last_modified_datetime
+    description: The order_last_modified_datetime of the orders.
+    tests:
+    - not_null
+  - name: order_total
+    description: The order_total of the orders.
+    tests: []
+  - name: currency_name
+    description: The currency_name of the orders.
+    tests:
+    - not_null
+  - name: order_status
+    description: The order_status of the orders.
+    tests:
+    - not_null
+  - name: order_tax
+    description: The order_tax of the orders.
+    tests: []
+  - name: order_shipping
+    description: The order_shipping of the orders.
+    tests: []
+  - name: order_discount
+    description: The order_discount of the orders.
+    tests: []
+  - name: order_subtotal
+    description: The order_subtotal of the orders.
+    tests: []
+  - name: platform_commission_fees
+    description: The platform_commission_fees of the orders.
+    tests: []
+  - name: tax_rate
+    description: The tax_rate of the orders.
+    tests: []
+  - name: refund_amount
+    description: The refund_amount of the orders.
+    tests: []
+  - name: total_weight
+    description: The total_weight of the orders.
+    tests: []
+  - name: order_source
+    description: The order_source of the orders.
+    tests:
+    - not_null
+  - name: sales_channel
+    description: The sales_channel of the orders.
+    tests:
+    - not_null
+  - name: cart_token
+    description: The cart_token of the orders.
+    tests:
+    - not_null
+  - name: email
+    description: The email of the orders.
+    tests:
+    - not_null
+  - name: store_employee_id
+    description: The store_employee_id of the orders.
+    tests:
+    - not_null
+    - unique
+  - name: order_cancel_datetime
+    description: The order_cancel_datetime of the orders.
+    tests:
+    - not_null
+  - name: financial_status
+    description: The financial_status of the orders.
+    tests:
+    - not_null
+  - name: fulfillment_status
+    description: The fulfillment_status of the orders.
+    tests:
+    - not_null
+  - name: cancel_reason
+    description: The cancel_reason of the orders.
+    tests:
+    - not_null
+  - name: shipping_address_id
+    description: The shipping_address_id of the orders.
+    tests:
+    - not_null
+    - unique
+  - name: billing_address_id
+    description: The billing_address_id of the orders.
+    tests:
+    - not_null
+    - unique
+  - name: customer_language
+    description: The customer_language of the orders.
+    tests:
+    - not_null
+  - name: browser_ip
+    description: The browser_ip of the orders.
+    tests:
+    - not_null
+  - name: referring_site
+    description: The referring_site of the orders.
+    tests:
+    - not_null
+  - name: order_tags
+    description: The order_tags of the orders.
+    tests:
+    - not_null
+  - name: order_notes
+    description: The order_notes of the orders.
+    tests:
+    - not_null
+  - name: business_order_flag
+    description: The business_order_flag of the orders.
+    tests:
+    - not_null
+  - name: expedited_shipping_order_flag
+    description: The expedited_shipping_order_flag of the orders.
+    tests:
+    - not_null
+  - name: prime_order_flag
+    description: The prime_order_flag of the orders.
+    tests:
+    - not_null
+  - name: replacement_order_flag
+    description: The replacement_order_flag of the orders.
+    tests:
+    - not_null
+  - name: refund_flag
+    description: The refund_flag of the orders.
+    tests:
+    - not_null
+  - name: taxes_included_flag
+    description: The taxes_included_flag of the orders.
+    tests:
+    - not_null
+  - name: notes
+    description: The notes of the orders.
+    tests:
+    - not_null
+- name: order_line_items
+  description: Table containing details for order_line_items.
+  columns:
+  - name: order_item_id
+    description: The order_item_id of the order_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: order_id
+    description: The order_id of the order_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: currency_name
+    description: The currency_name of the order_line_items.
+    tests:
+    - not_null
+  - name: product_variant_store_id
+    description: The product_variant_store_id of the order_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: order_item_created_datetime
+    description: The order_item_created_datetime of the order_line_items.
+    tests:
+    - not_null
+  - name: order_item_last_modified_datetime
+    description: The order_item_last_modified_datetime of the order_line_items.
+    tests:
+    - not_null
+  - name: order_item_price
+    description: The order_item_price of the order_line_items.
+    tests: []
+  - name: order_item_tax
+    description: The order_item_tax of the order_line_items.
+    tests: []
+  - name: order_item_shipping
+    description: The order_item_shipping of the order_line_items.
+    tests: []
+  - name: order_item_discount
+    description: The order_item_discount of the order_line_items.
+    tests: []
+  - name: order_item_subtotal
+    description: The order_item_subtotal of the order_line_items.
+    tests: []
+  - name: order_item_quantity
+    description: The order_item_quantity of the order_line_items.
+    tests: []
+  - name: order_quantity_fulfilled
+    description: The order_quantity_fulfilled of the order_line_items.
+    tests: []
+  - name: product_cost
+    description: The product_cost of the order_line_items.
+    tests: []
+  - name: order_item_status
+    description: The order_item_status of the order_line_items.
+    tests:
+    - not_null
+  - name: platform_commission_fees
+    description: The platform_commission_fees of the order_line_items.
+    tests: []
+  - name: gift_card_flag
+    description: The gift_card_flag of the order_line_items.
+    tests:
+    - not_null
+  - name: shipped_item_flag
+    description: The shipped_item_flag of the order_line_items.
+    tests:
+    - not_null
+  - name: refund_flag
+    description: The refund_flag of the order_line_items.
+    tests:
+    - not_null
+- name: order_payments
+  description: Table containing details for order_payments.
+  columns:
+  - name: payment_id
+    description: The payment_id of the order_payments.
+    tests:
+    - not_null
+    - unique
+  - name: order_id
+    description: The order_id of the order_payments.
+    tests:
+    - not_null
+    - unique
+  - name: payment_gateway_name
+    description: The payment_gateway_name of the order_payments.
+    tests:
+    - not_null
+- name: transactions
+  description: Table containing details for transactions.
+  columns:
+  - name: transaction_id
+    description: The transaction_id of the transactions.
+    tests:
+    - not_null
+    - unique
+  - name: order_id
+    description: The order_id of the transactions.
+    tests:
+    - not_null
+    - unique
+  - name: transaction_datetime
+    description: The transaction_datetime of the transactions.
+    tests:
+    - not_null
+  - name: transaction_gateway
+    description: The transaction_gateway of the transactions.
+    tests:
+    - not_null
+  - name: transaction_source
+    description: The transaction_source of the transactions.
+    tests:
+    - not_null
+  - name: transaction_type
+    description: The transaction_type of the transactions.
+    tests:
+    - not_null
+  - name: transaction_status
+    description: The transaction_status of the transactions.
+    tests:
+    - not_null
+  - name: transaction_authorization
+    description: The transaction_authorization of the transactions.
+    tests:
+    - not_null
+  - name: currency_name
+    description: The currency_name of the transactions.
+    tests:
+    - not_null
+  - name: transaction_amount
+    description: The transaction_amount of the transactions.
+    tests: []
+  - name: avs_result_code
+    description: The avs_result_code of the transactions.
+    tests:
+    - not_null
+  - name: credit_card_bin
+    description: The credit_card_bin of the transactions.
+    tests:
+    - not_null
+  - name: credit_card_company
+    description: The credit_card_company of the transactions.
+    tests:
+    - not_null
+  - name: cvv_result_code
+    description: The cvv_result_code of the transactions.
+    tests:
+    - not_null
+  - name: transaction_created_datetime
+    description: The transaction_created_datetime of the transactions.
+    tests:
+    - not_null
+- name: fulfillments
+  description: Table containing details for fulfillments.
+  columns:
+  - name: fulfillment_id
+    description: The fulfillment_id of the fulfillments.
+    tests:
+    - not_null
+    - unique
+  - name: order_id
+    description: The order_id of the fulfillments.
+    tests:
+    - not_null
+    - unique
+  - name: fulfillment_status
+    description: The fulfillment_status of the fulfillments.
+    tests:
+    - not_null
+  - name: fulfillment_location_id
+    description: The fulfillment_location_id of the fulfillments.
+    tests:
+    - not_null
+    - unique
+  - name: fulfillment_location
+    description: The fulfillment_location of the fulfillments.
+    tests:
+    - not_null
+  - name: customer_address_id
+    description: The customer_address_id of the fulfillments.
+    tests:
+    - not_null
+    - unique
+  - name: shipment_status
+    description: The shipment_status of the fulfillments.
+    tests:
+    - not_null
+  - name: tracking_company
+    description: The tracking_company of the fulfillments.
+    tests:
+    - not_null
+  - name: tracking_number
+    description: The tracking_number of the fulfillments.
+    tests:
+    - not_null
+  - name: currency_name
+    description: The currency_name of the fulfillments.
+    tests:
+    - not_null
+  - name: fulfillment_cost
+    description: The fulfillment_cost of the fulfillments.
+    tests: []
+  - name: shipping_cost
+    description: The shipping_cost of the fulfillments.
+    tests: []
+  - name: fulfillment_datetime
+    description: The fulfillment_datetime of the fulfillments.
+    tests:
+    - not_null
+  - name: estimated_arrival_date
+    description: The estimated_arrival_date of the fulfillments.
+    tests: []
+  - name: delivery_datetime
+    description: The delivery_datetime of the fulfillments.
+    tests:
+    - not_null
+  - name: fulfillment_created_datetime
+    description: The fulfillment_created_datetime of the fulfillments.
+    tests:
+    - not_null
+  - name: fulfullment_updated_datetime
+    description: The fulfullment_updated_datetime of the fulfillments.
+    tests:
+    - not_null
+- name: order_item_fulfillments
+  description: Table containing details for order_item_fulfillments.
+  columns:
+  - name: order_item_fulfillment_id
+    description: The order_item_fulfillment_id of the order_item_fulfillments.
+    tests:
+    - not_null
+    - unique
+  - name: order_item_id
+    description: The order_item_id of the order_item_fulfillments.
+    tests:
+    - not_null
+    - unique
+  - name: fulfillment_id
+    description: The fulfillment_id of the order_item_fulfillments.
+    tests:
+    - not_null
+    - unique
+  - name: product_variant_id
+    description: The product_variant_id of the order_item_fulfillments.
+    tests:
+    - not_null
+    - unique
+  - name: product_variant_sku
+    description: The product_variant_sku of the order_item_fulfillments.
+    tests:
+    - not_null
+  - name: order_item_quantity
+    description: The order_item_quantity of the order_item_fulfillments.
+    tests: []
+  - name: order_item_quantity_to_fulfill
+    description: The order_item_quantity_to_fulfill of the order_item_fulfillments.
+    tests: []
+  - name: item_fulfillment_status
+    description: The item_fulfillment_status of the order_item_fulfillments.
+    tests:
+    - not_null
+- name: refunds
+  description: Table containing details for refunds.
+  columns:
+  - name: refund_id
+    description: The refund_id of the refunds.
+    tests:
+    - not_null
+    - unique
+  - name: order_id
+    description: The order_id of the refunds.
+    tests:
+    - not_null
+    - unique
+  - name: employee_id
+    description: The employee_id of the refunds.
+    tests:
+    - not_null
+    - unique
+  - name: refund_datetime
+    description: The refund_datetime of the refunds.
+    tests:
+    - not_null
+  - name: currency_name
+    description: The currency_name of the refunds.
+    tests:
+    - not_null
+  - name: refund_amount
+    description: The refund_amount of the refunds.
+    tests: []
+- name: refund_line_items
+  description: Table containing details for refund_line_items.
+  columns:
+  - name: refund_line_item_id
+    description: The refund_line_item_id of the refund_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: refund_id
+    description: The refund_id of the refund_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: order_id
+    description: The order_id of the refund_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: order_item_id
+    description: The order_item_id of the refund_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: refund_item_quantity
+    description: The refund_item_quantity of the refund_line_items.
+    tests: []
+  - name: refund_amount
+    description: The refund_amount of the refund_line_items.
+    tests: []
+  - name: refund_tax_amount
+    description: The refund_tax_amount of the refund_line_items.
+    tests: []
+- name: product_listings
+  description: Table containing details for product_listings.
+  columns:
+  - name: product_list_id
+    description: The product_list_id of the product_listings.
+    tests:
+    - not_null
+    - unique
+  - name: product_variant_store_id
+    description: The product_variant_store_id of the product_listings.
+    tests:
+    - not_null
+    - unique
+  - name: market_id
+    description: The market_id of the product_listings.
+    tests:
+    - not_null
+    - unique
+  - name: store_id
+    description: The store_id of the product_listings.
+    tests:
+    - not_null
+    - unique
+  - name: product_price
+    description: The product_price of the product_listings.
+    tests: []
+  - name: currency_name
+    description: The currency_name of the product_listings.
+    tests:
+    - not_null
+  - name: product_listing_created_datetime
+    description: The product_listing_created_datetime of the product_listings.
+    tests:
+    - not_null
+  - name: product_listing_last_modified_datetime
+    description: The product_listing_last_modified_datetime of the product_listings.
+    tests:
+    - not_null
+  - name: product_listing_status
+    description: The product_listing_status of the product_listings.
+    tests:
+    - not_null
+  - name: product_listing_description
+    description: The product_listing_description of the product_listings.
+    tests:
+    - not_null
+- name: products
+  description: Table containing details for products.
+  columns:
+  - name: product_id
+    description: The product_id of the products.
+    tests:
+    - not_null
+    - unique
+  - name: product_name
+    description: The product_name of the products.
+    tests:
+    - not_null
+  - name: product_type
+    description: The product_type of the products.
+    tests:
+    - not_null
+  - name: product_tags
+    description: The product_tags of the products.
+    tests:
+    - not_null
+  - name: supplier_id
+    description: The supplier_id of the products.
+    tests:
+    - not_null
+    - unique
+  - name: product_created_datetime
+    description: The product_created_datetime of the products.
+    tests:
+    - not_null
+  - name: product_modified_datetime
+    description: The product_modified_datetime of the products.
+    tests:
+    - not_null
+  - name: product_status
+    description: The product_status of the products.
+    tests:
+    - not_null
+  - name: product_description
+    description: The product_description of the products.
+    tests:
+    - not_null
+  - name: product_category
+    description: The product_category of the products.
+    tests:
+    - not_null
+  - name: product_subcategory
+    description: The product_subcategory of the products.
+    tests:
+    - not_null
+  - name: product_brand
+    description: The product_brand of the products.
+    tests:
+    - not_null
+  - name: product_department
+    description: The product_department of the products.
+    tests:
+    - not_null
+- name: product_variants
+  description: Table containing details for product_variants.
+  columns:
+  - name: product_variant_id
+    description: The product_variant_id of the product_variants.
+    tests:
+    - not_null
+    - unique
+  - name: product_id
+    description: The product_id of the product_variants.
+    tests:
+    - not_null
+    - unique
+  - name: supplier_id
+    description: The supplier_id of the product_variants.
+    tests:
+    - not_null
+    - unique
+  - name: product_variant_name
+    description: The product_variant_name of the product_variants.
+    tests:
+    - not_null
+  - name: product_variant_sku
+    description: The product_variant_sku of the product_variants.
+    tests:
+    - not_null
+  - name: product_variant_created_datetime
+    description: The product_variant_created_datetime of the product_variants.
+    tests:
+    - not_null
+  - name: product_variant_last_modified_datetime
+    description: The product_variant_last_modified_datetime of the product_variants.
+    tests:
+    - not_null
+  - name: product_variant_color
+    description: The product_variant_color of the product_variants.
+    tests:
+    - not_null
+  - name: product_variant_size
+    description: The product_variant_size of the product_variants.
+    tests:
+    - not_null
+  - name: product_variant_weight
+    description: The product_variant_weight of the product_variants.
+    tests:
+    - not_null
+  - name: product_variant_weight_unit
+    description: The product_variant_weight_unit of the product_variants.
+    tests:
+    - not_null
+  - name: product_variant_status
+    description: The product_variant_status of the product_variants.
+    tests:
+    - not_null
+  - name: barcode
+    description: The barcode of the product_variants.
+    tests:
+    - not_null
+  - name: inventory_tracked_flag
+    description: The inventory_tracked_flag of the product_variants.
+    tests:
+    - not_null
+  - name: requires_shipping_flag
+    description: The requires_shipping_flag of the product_variants.
+    tests:
+    - not_null
+  - name: country_of_origin
+    description: The country_of_origin of the product_variants.
+    tests:
+    - not_null
+  - name: image_url
+    description: The image_url of the product_variants.
+    tests:
+    - not_null
+  - name: image_position
+    description: The image_position of the product_variants.
+    tests: []
+- name: inventory_history
+  description: Table containing details for inventory_history.
+  columns:
+  - name: product_variant_store_id
+    description: The product_variant_store_id of the inventory_history.
+    tests:
+    - not_null
+    - unique
+  - name: inventory_datetime
+    description: The inventory_datetime of the inventory_history.
+    tests:
+    - not_null
+  - name: store_id
+    description: The store_id of the inventory_history.
+    tests:
+    - not_null
+    - unique
+  - name: inventory_quantity
+    description: The inventory_quantity of the inventory_history.
+    tests: []
+- name: price_history
+  description: Table containing details for price_history.
+  columns:
+  - name: product_variant_store_id
+    description: The product_variant_store_id of the price_history.
+    tests:
+    - not_null
+    - unique
+  - name: price_datetime
+    description: The price_datetime of the price_history.
+    tests:
+    - not_null
+  - name: price
+    description: The price of the price_history.
+    tests: []
+  - name: currency
+    description: The currency of the price_history.
+    tests:
+    - not_null
+  - name: store_id
+    description: The store_id of the price_history.
+    tests:
+    - not_null
+    - unique
+  - name: market_id
+    description: The market_id of the price_history.
+    tests:
+    - not_null
+    - unique
+  - name: price_start_datetime
+    description: The price_start_datetime of the price_history.
+    tests:
+    - not_null
+  - name: price_end_datetime
+    description: The price_end_datetime of the price_history.
+    tests:
+    - not_null
+- name: stores
+  description: Table containing details for stores.
+  columns:
+  - name: store_id
+    description: The store_id of the stores.
+    tests:
+    - not_null
+    - unique
+  - name: market_id
+    description: The market_id of the stores.
+    tests:
+    - not_null
+    - unique
+  - name: location_name
+    description: The location_name of the stores.
+    tests:
+    - not_null
+  - name: address1
+    description: The address1 of the stores.
+    tests:
+    - not_null
+  - name: address2
+    description: The address2 of the stores.
+    tests:
+    - not_null
+  - name: city
+    description: The city of the stores.
+    tests:
+    - not_null
+  - name: state
+    description: The state of the stores.
+    tests:
+    - not_null
+  - name: country
+    description: The country of the stores.
+    tests:
+    - not_null
+  - name: zip
+    description: The zip of the stores.
+    tests:
+    - not_null
+  - name: phone_number
+    description: The phone_number of the stores.
+    tests:
+    - not_null
+  - name: store_open_date
+    description: The store_open_date of the stores.
+    tests: []
+  - name: store_close_date
+    description: The store_close_date of the stores.
+    tests: []
+- name: inventory_cost_history
+  description: Table containing details for inventory_cost_history.
+  columns:
+  - name: product_variant_store_id
+    description: The product_variant_store_id of the inventory_cost_history.
+    tests:
+    - not_null
+    - unique
+  - name: cost_datetime
+    description: The cost_datetime of the inventory_cost_history.
+    tests:
+    - not_null
+  - name: store_id
+    description: The store_id of the inventory_cost_history.
+    tests:
+    - not_null
+    - unique
+  - name: cost
+    description: The cost of the inventory_cost_history.
+    tests: []
+  - name: currency
+    description: The currency of the inventory_cost_history.
+    tests:
+    - not_null
+  - name: received_datetime
+    description: The received_datetime of the inventory_cost_history.
+    tests:
+    - not_null
+  - name: quantity_received
+    description: The quantity_received of the inventory_cost_history.
+    tests: []
+  - name: supplier_id
+    description: The supplier_id of the inventory_cost_history.
+    tests:
+    - not_null
+    - unique
+- name: collections
+  description: Table containing details for collections.
+  columns:
+  - name: collection_id
+    description: The collection_id of the collections.
+    tests:
+    - not_null
+    - unique
+  - name: product_variant_store_id
+    description: The product_variant_store_id of the collections.
+    tests:
+    - not_null
+    - unique
+  - name: store_id
+    description: The store_id of the collections.
+    tests:
+    - not_null
+    - unique
+  - name: collection_created_datetime
+    description: The collection_created_datetime of the collections.
+    tests:
+    - not_null
+  - name: collection_last_modified_datetime
+    description: The collection_last_modified_datetime of the collections.
+    tests:
+    - not_null
+- name: product_variant_stores
+  description: Table containing details for product_variant_stores.
+  columns:
+  - name: product_variant_store_id
+    description: The product_variant_store_id of the product_variant_stores.
+    tests:
+    - not_null
+    - unique
+  - name: product_variant_id
+    description: The product_variant_id of the product_variant_stores.
+    tests:
+    - not_null
+    - unique
+  - name: store_id
+    description: The store_id of the product_variant_stores.
+    tests:
+    - not_null
+    - unique
+  - name: product_variant_store_created_datetime
+    description: The product_variant_store_created_datetime of the product_variant_stores.
+    tests:
+    - not_null
+  - name: product_variant_store_last_modified_datetime
+    description: The product_variant_store_last_modified_datetime of the product_variant_stores.
+    tests:
+    - not_null
+- name: product_reviews
+  description: Table containing details for product_reviews.
+  columns:
+  - name: review_id
+    description: The review_id of the product_reviews.
+    tests:
+    - not_null
+    - unique
+  - name: product_id
+    description: The product_id of the product_reviews.
+    tests:
+    - not_null
+    - unique
+  - name: customer_id
+    description: The customer_id of the product_reviews.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: review
+    description: The review of the product_reviews.
+    tests:
+    - not_null
+  - name: rating
+    description: The rating of the product_reviews.
+    tests: []
+  - name: product_review_created_datetime
+    description: The product_review_created_datetime of the product_reviews.
+    tests:
+    - not_null
+  - name: product_review_last_modified_datetime
+    description: The product_review_last_modified_datetime of the product_reviews.
+    tests:
+    - not_null
+  - name: review_status
+    description: The review_status of the product_reviews.
+    tests:
+    - not_null
+  - name: review_language
+    description: The review_language of the product_reviews.
+    tests:
+    - not_null
+  - name: review_market
+    description: The review_market of the product_reviews.
+    tests:
+    - not_null
+- name: customers
+  description: Table containing details for customers.
+  columns:
+  - name: customer_id
+    description: The customer_id of the customers.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: first_name
+    description: The first_name of the customers.
+    tests:
+    - not_null
+  - name: last_name
+    description: The last_name of the customers.
+    tests:
+    - not_null
+  - name: email
+    description: The email of the customers.
+    tests:
+    - not_null
+  - name: address_id
+    description: The address_id of the customers.
+    tests:
+    - not_null
+    - unique
+  - name: customer_status
+    description: The customer_status of the customers.
+    tests:
+    - not_null
+  - name: phone_number
+    description: The phone_number of the customers.
+    tests:
+    - not_null
+  - name: customer_created_datetime
+    description: The customer_created_datetime of the customers.
+    tests:
+    - not_null
+  - name: customer_last_modified_datetime
+    description: The customer_last_modified_datetime of the customers.
+    tests:
+    - not_null
+- name: customer_addresses
+  description: Table containing details for customer_addresses.
+  columns:
+  - name: customer_address_id
+    description: The customer_address_id of the customer_addresses.
+    tests:
+    - not_null
+    - unique
+  - name: customer_id
+    description: The customer_id of the customer_addresses.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: address1
+    description: The address1 of the customer_addresses.
+    tests:
+    - not_null
+  - name: address2
+    description: The address2 of the customer_addresses.
+    tests:
+    - not_null
+  - name: city
+    description: The city of the customer_addresses.
+    tests:
+    - not_null
+  - name: state
+    description: The state of the customer_addresses.
+    tests:
+    - not_null
+  - name: zip
+    description: The zip of the customer_addresses.
+    tests:
+    - not_null
+  - name: country
+    description: The country of the customer_addresses.
+    tests:
+    - not_null
+  - name: address_type
+    description: The address_type of the customer_addresses.
+    tests:
+    - not_null
+  - name: address_created_datetime
+    description: The address_created_datetime of the customer_addresses.
+    tests:
+    - not_null
+  - name: address_last_modified_datetime
+    description: The address_last_modified_datetime of the customer_addresses.
+    tests:
+    - not_null
+- name: suppliers
+  description: Table containing details for suppliers.
+  columns:
+  - name: supplier_id
+    description: The supplier_id of the suppliers.
+    tests:
+    - not_null
+    - unique
+  - name: supplier_name
+    description: The supplier_name of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_address
+    description: The supplier_address of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_city
+    description: The supplier_city of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_state
+    description: The supplier_state of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_zip
+    description: The supplier_zip of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_country
+    description: The supplier_country of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_phone
+    description: The supplier_phone of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_email
+    description: The supplier_email of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_status
+    description: The supplier_status of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_created_datetime
+    description: The supplier_created_datetime of the suppliers.
+    tests:
+    - not_null
+  - name: supplier_last_modified_datetime
+    description: The supplier_last_modified_datetime of the suppliers.
+    tests:
+    - not_null
+- name: audiences
+  description: Table containing details for audiences.
+  columns:
+  - name: audience_id
+    description: The audience_id of the audiences.
+    tests:
+    - not_null
+    - unique
+  - name: customer_id
+    description: The customer_id of the audiences.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: audience_created_datetime
+    description: The audience_created_datetime of the audiences.
+    tests:
+    - not_null
+  - name: audience_last_modified_datetime
+    description: The audience_last_modified_datetime of the audiences.
+    tests:
+    - not_null
+- name: ad_campaigns
+  description: Table containing details for ad_campaigns.
+  columns:
+  - name: ad_campaign_id
+    description: The ad_campaign_id of the ad_campaigns.
+    tests:
+    - not_null
+    - unique
+  - name: audience_id
+    description: The audience_id of the ad_campaigns.
+    tests:
+    - not_null
+    - unique
+  - name: ad_platform_id
+    description: The ad_platform_id of the ad_campaigns.
+    tests:
+    - not_null
+    - unique
+  - name: ad_campaign_created_datetime
+    description: The ad_campaign_created_datetime of the ad_campaigns.
+    tests:
+    - not_null
+  - name: ad_campaign_last_modified_datetime
+    description: The ad_campaign_last_modified_datetime of the ad_campaigns.
+    tests:
+    - not_null
+- name: ads
+  description: Table containing details for ads.
+  columns:
+  - name: ad_id
+    description: The ad_id of the ads.
+    tests:
+    - not_null
+    - unique
+  - name: ad_campaign_id
+    description: The ad_campaign_id of the ads.
+    tests:
+    - not_null
+    - unique
+  - name: ad_created_datetime
+    description: The ad_created_datetime of the ads.
+    tests:
+    - not_null
+  - name: ad_last_modified_datetime
+    description: The ad_last_modified_datetime of the ads.
+    tests:
+    - not_null
+- name: ad_impressions
+  description: Table containing details for ad_impressions.
+  columns:
+  - name: ad_impression_id
+    description: The ad_impression_id of the ad_impressions.
+    tests:
+    - not_null
+    - unique
+  - name: ad_id
+    description: The ad_id of the ad_impressions.
+    tests:
+    - not_null
+    - unique
+  - name: ad_impression_datetime
+    description: The ad_impression_datetime of the ad_impressions.
+    tests:
+    - not_null
+- name: email_campaigns
+  description: Table containing details for email_campaigns.
+  columns:
+  - name: email_campaign_id
+    description: The email_campaign_id of the email_campaigns.
+    tests:
+    - not_null
+    - unique
+  - name: audience_id
+    description: The audience_id of the email_campaigns.
+    tests:
+    - not_null
+    - unique
+  - name: email_campaign_created_datetime
+    description: The email_campaign_created_datetime of the email_campaigns.
+    tests:
+    - not_null
+- name: emails
+  description: Table containing details for emails.
+  columns:
+  - name: email_id
+    description: The email_id of the emails.
+    tests:
+    - not_null
+    - unique
+  - name: email_campaign_id
+    description: The email_campaign_id of the emails.
+    tests:
+    - not_null
+    - unique
+  - name: email_created_datetime
+    description: The email_created_datetime of the emails.
+    tests:
+    - not_null
+- name: emails_sent
+  description: Table containing details for emails_sent.
+  columns:
+  - name: email_sent_id
+    description: The email_sent_id of the emails_sent.
+    tests:
+    - not_null
+    - unique
+  - name: email_id
+    description: The email_id of the emails_sent.
+    tests:
+    - not_null
+    - unique
+  - name: email_sent_datetime
+    description: The email_sent_datetime of the emails_sent.
+    tests:
+    - not_null
+- name: customer_email_addresses
+  description: Table containing details for customer_email_addresses.
+  columns:
+  - name: customer_email_address_id
+    description: The customer_email_address_id of the customer_email_addresses.
+    tests:
+    - not_null
+    - unique
+  - name: customer_id
+    description: The customer_id of the customer_email_addresses.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: email_address
+    description: The email_address of the customer_email_addresses.
+    tests:
+    - not_null
+  - name: email_address_created_datetime
+    description: The email_address_created_datetime of the customer_email_addresses.
+    tests:
+    - not_null
+  - name: email_address_last_modified_datetime
+    description: The email_address_last_modified_datetime of the customer_email_addresses.
+    tests:
+    - not_null
+- name: calendar
+  description: Table containing details for calendar.
+  columns:
+  - name: date
+    description: The date of the calendar.
+    tests: []
+  - name: day_of_week
+    description: The day_of_week of the calendar.
+    tests:
+    - not_null
+  - name: month
+    description: The month of the calendar.
+    tests:
+    - not_null
+  - name: year
+    description: The year of the calendar.
+    tests:
+    - not_null
+  - name: fiscal_week
+    description: The fiscal_week of the calendar.
+    tests:
+    - not_null
+  - name: fiscal_month
+    description: The fiscal_month of the calendar.
+    tests:
+    - not_null
+  - name: fiscal_quarter
+    description: The fiscal_quarter of the calendar.
+    tests:
+    - not_null
+  - name: fiscal_year
+    description: The fiscal_year of the calendar.
+    tests:
+    - not_null
+- name: currency
+  description: Table containing details for currency.
+  columns:
+  - name: currency_name
+    description: The currency_name of the currency.
+    tests:
+    - not_null
+  - name: currency_date
+    description: The currency_date of the currency.
+    tests: []
+  - name: currency_exchange_rate
+    description: The currency_exchange_rate of the currency.
+    tests: []
+- name: markets
+  description: Table containing details for markets.
+  columns:
+  - name: market_id
+    description: The market_id of the markets.
+    tests:
+    - not_null
+    - unique
+  - name: market_name
+    description: The market_name of the markets.
+    tests:
+    - not_null
+- name: store_markets
+  description: Table containing details for store_markets.
+  columns:
+  - name: store_market_id
+    description: The store_market_id of the store_markets.
+    tests:
+    - not_null
+    - unique
+  - name: store_id
+    description: The store_id of the store_markets.
+    tests:
+    - not_null
+    - unique
+  - name: market_id
+    description: The market_id of the store_markets.
+    tests:
+    - not_null
+    - unique
+- name: product_suppliers
+  description: Table containing details for product_suppliers.
+  columns:
+  - name: product_supplier_id
+    description: The product_supplier_id of the product_suppliers.
+    tests:
+    - not_null
+    - unique
+  - name: product_id
+    description: The product_id of the product_suppliers.
+    tests:
+    - not_null
+    - unique
+  - name: supplier_id
+    description: The supplier_id of the product_suppliers.
+    tests:
+    - not_null
+    - unique
+  - name: product_supplier_created_datetime
+    description: The product_supplier_created_datetime of the product_suppliers.
+    tests:
+    - not_null
+  - name: product_supplier_last_modified_datetime
+    description: The product_supplier_last_modified_datetime of the product_suppliers.
+    tests:
+    - not_null
+- name: households
+  description: Table containing details for households.
+  columns:
+  - name: household_id
+    description: The household_id of the households.
+    tests:
+    - not_null
+    - unique
+  - name: customer_id
+    description: The customer_id of the households.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+- name: employees
+  description: Table containing details for employees.
+  columns:
+  - name: employee_id
+    description: The employee_id of the employees.
+    tests:
+    - not_null
+    - unique
+  - name: store_employee_id
+    description: The store_employee_id of the employees.
+    tests:
+    - not_null
+    - unique
+  - name: first_name
+    description: The first_name of the employees.
+    tests:
+    - not_null
+  - name: last_name
+    description: The last_name of the employees.
+    tests:
+    - not_null
+  - name: employee_start_date
+    description: The employee_start_date of the employees.
+    tests: []
+  - name: employee_end_date
+    description: The employee_end_date of the employees.
+    tests: []
+- name: order_discounts
+  description: Table containing details for order_discounts.
+  columns:
+  - name: order_discount_id
+    description: The order_discount_id of the order_discounts.
+    tests:
+    - not_null
+    - unique
+  - name: order_id
+    description: The order_id of the order_discounts.
+    tests:
+    - not_null
+    - unique
+  - name: discount_code
+    description: The discount_code of the order_discounts.
+    tests:
+    - not_null
+  - name: discount_type
+    description: The discount_type of the order_discounts.
+    tests:
+    - not_null
+  - name: currency_name
+    description: The currency_name of the order_discounts.
+    tests:
+    - not_null
+  - name: discount_amount
+    description: The discount_amount of the order_discounts.
+    tests: []
+- name: order_shipping_services
+  description: Table containing details for order_shipping_services.
+  columns:
+  - name: order_shipping_line_id
+    description: The order_shipping_line_id of the order_shipping_services.
+    tests:
+    - not_null
+    - unique
+  - name: order_id
+    description: The order_id of the order_shipping_services.
+    tests:
+    - not_null
+    - unique
+  - name: order_item_id
+    description: The order_item_id of the order_shipping_services.
+    tests:
+    - not_null
+    - unique
+  - name: shipping_code
+    description: The shipping_code of the order_shipping_services.
+    tests:
+    - not_null
+  - name: shipping_title
+    description: The shipping_title of the order_shipping_services.
+    tests:
+    - not_null
+  - name: carrier_identifier
+    description: The carrier_identifier of the order_shipping_services.
+    tests:
+    - not_null
+- name: events_base_cart_viewed
+  description: Table containing details for events_base_cart_viewed.
+  columns:
+  - name: products
+    description: The products of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: total
+    description: The total of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_cart_viewed.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_cart_viewed.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_name
+    description: The context_campaign_name of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_medium
+    description: The context_campaign_medium of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_source
+    description: The context_campaign_source of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_page_search
+    description: The context_page_search of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: context_page_hash
+    description: The context_page_hash of the events_base_cart_viewed.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_cart_viewed.
+    tests:
+    - not_null
+    - unique
+- name: events_base_checkout_created
+  description: Table containing details for events_base_checkout_created.
+  columns:
+  - name: affiliation
+    description: The affiliation of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: coupon
+    description: The coupon of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: currency
+    description: The currency of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: discount
+    description: The discount of the events_base_checkout_created.
+    tests: []
+  - name: products
+    description: The products of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: tax
+    description: The tax of the events_base_checkout_created.
+    tests: []
+  - name: value
+    description: The value of the events_base_checkout_created.
+    tests: []
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_checkout_created.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_checkout_created.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: context_passed_ip
+    description: The context_passed_ip of the events_base_checkout_created.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_checkout_created.
+    tests:
+    - not_null
+    - unique
+- name: events_base_checkout_updated
+  description: Table containing details for events_base_checkout_updated.
+  columns:
+  - name: affiliation
+    description: The affiliation of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: coupon
+    description: The coupon of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: currency
+    description: The currency of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: discount
+    description: The discount of the events_base_checkout_updated.
+    tests: []
+  - name: products
+    description: The products of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: tax
+    description: The tax of the events_base_checkout_updated.
+    tests: []
+  - name: value
+    description: The value of the events_base_checkout_updated.
+    tests: []
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_checkout_updated.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_checkout_updated.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: context_passed_ip
+    description: The context_passed_ip of the events_base_checkout_updated.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_checkout_updated.
+    tests:
+    - not_null
+    - unique
+- name: events_base_identifies
+  description: Table containing details for events_base_identifies.
+  columns:
+  - name: address_city
+    description: The address_city of the events_base_identifies.
+    tests:
+    - not_null
+  - name: address_street
+    description: The address_street of the events_base_identifies.
+    tests:
+    - not_null
+  - name: email
+    description: The email of the events_base_identifies.
+    tests:
+    - not_null
+  - name: first_name
+    description: The first_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: last_name
+    description: The last_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: name
+    description: The name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: phone
+    description: The phone of the events_base_identifies.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+  - name: external_customer_id
+    description: The external_customer_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: created_at
+    description: The created_at of the events_base_identifies.
+    tests:
+    - not_null
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_first_name
+    description: The context_traits_first_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_phone
+    description: The context_traits_phone of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_passed_ip
+    description: The context_passed_ip of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_email
+    description: The context_traits_email of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_last_name
+    description: The context_traits_last_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_created_at
+    description: The context_traits_created_at of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_external_customer_id
+    description: The context_traits_external_customer_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: context_library_version
+    description: The context_library_version of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_name
+    description: The context_traits_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_session_id
+    description: The context_traits_context_session_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_address_street
+    description: The context_traits_address_street of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_ip
+    description: The context_traits_context_ip of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_address_country_code
+    description: The context_traits_address_country_code of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_address_state
+    description: The context_traits_address_state of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_client_id
+    description: The context_traits_context_client_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_context_anonymous_id
+    description: The context_traits_context_anonymous_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_address_postal_code
+    description: The context_traits_address_postal_code of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_address_city
+    description: The context_traits_address_city of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_addresses
+    description: The context_traits_addresses of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_page_url
+    description: The context_traits_context_page_url of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_page_search
+    description: The context_traits_context_page_search of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_debug
+    description: The context_traits_context_debug of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_os_name
+    description: The context_traits_context_os_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_page_width
+    description: The context_traits_context_page_width of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_page_title
+    description: The context_traits_context_page_title of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_page_referrer
+    description: The context_traits_context_page_referrer of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_library_version
+    description: The context_traits_context_library_version of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_page_search
+    description: The context_page_search of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_locale
+    description: The context_traits_context_locale of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_page_height
+    description: The context_traits_context_page_height of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_user_agent
+    description: The context_traits_context_user_agent of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_app
+    description: The context_traits_context_app of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_library_name
+    description: The context_traits_context_library_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_referrer
+    description: The context_traits_context_referrer of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_initialized
+    description: The context_traits_context_initialized of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_timezone
+    description: The context_traits_context_timezone of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_page_path
+    description: The context_traits_context_page_path of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_offline
+    description: The context_traits_context_offline of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_campaign_gclid
+    description: The context_campaign_gclid of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_gclid
+    description: The context_traits_context_campaign_gclid of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_page_hash
+    description: The context_traits_context_page_hash of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_page_hash
+    description: The context_page_hash of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_campaign_term
+    description: The context_campaign_term of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_source
+    description: The context_traits_context_campaign_source of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_term
+    description: The context_traits_context_campaign_term of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_medium
+    description: The context_traits_context_campaign_medium of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_campaign_name
+    description: The context_campaign_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_campaign_source
+    description: The context_campaign_source of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_name
+    description: The context_traits_context_campaign_name of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_campaign_medium
+    description: The context_campaign_medium of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_campaign_profile
+    description: The context_campaign_profile of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_campaign_id
+    description: The context_campaign_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_context_campaign_id
+    description: The context_traits_context_campaign_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_context_campaign_profile
+    description: The context_traits_context_campaign_profile of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_campaign_content
+    description: The context_campaign_content of the events_base_identifies.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_content
+    description: The context_traits_context_campaign_content of the events_base_identifies.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_identifies.
+    tests:
+    - not_null
+    - unique
+- name: events_base_logged_in
+  description: Table containing details for events_base_logged_in.
+  columns:
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_logged_in.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_logged_in.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: context_page_search
+    description: The context_page_search of the events_base_logged_in.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_logged_in.
+    tests:
+    - not_null
+    - unique
+- name: events_base_order_cancelled
+  description: Table containing details for events_base_order_cancelled.
+  columns:
+  - name: billing_address_address
+    description: The billing_address_address of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: billing_address_city
+    description: The billing_address_city of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: billing_address_country
+    description: The billing_address_country of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: billing_address_first_name
+    description: The billing_address_first_name of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: billing_address_last_name
+    description: The billing_address_last_name of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: billing_address_postal_code
+    description: The billing_address_postal_code of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: billing_address_state
+    description: The billing_address_state of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: currency
+    description: The currency of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: order_id
+    description: The order_id of the events_base_order_cancelled.
+    tests:
+    - not_null
+    - unique
+  - name: revenue
+    description: The revenue of the events_base_order_cancelled.
+    tests: []
+  - name: shipping
+    description: The shipping of the events_base_order_cancelled.
+    tests: []
+  - name: status
+    description: The status of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: subtotal
+    description: The subtotal of the events_base_order_cancelled.
+    tests: []
+  - name: total
+    description: The total of the events_base_order_cancelled.
+    tests: []
+  - name: type
+    description: The type of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: value
+    description: The value of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_order_cancelled.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_order_cancelled.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: context_passed_ip
+    description: The context_passed_ip of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_order_cancelled.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_order_cancelled.
+    tests:
+    - not_null
+    - unique
+- name: events_base_order_completed
+  description: Table containing details for events_base_order_completed.
+  columns:
+  - name: affiliation
+    description: The affiliation of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: billing_address_address
+    description: The billing_address_address of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: billing_address_city
+    description: The billing_address_city of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: billing_address_country
+    description: The billing_address_country of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: billing_address_first_name
+    description: The billing_address_first_name of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: billing_address_last_name
+    description: The billing_address_last_name of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: billing_address_phone
+    description: The billing_address_phone of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: billing_address_postal_code
+    description: The billing_address_postal_code of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: billing_address_state
+    description: The billing_address_state of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: cart_id
+    description: The cart_id of the events_base_order_completed.
+    tests:
+    - not_null
+    - unique
+  - name: coupon
+    description: The coupon of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: currency
+    description: The currency of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: discount
+    description: The discount of the events_base_order_completed.
+    tests: []
+  - name: event_text
+    description: The event_text of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: order_id
+    description: The order_id of the events_base_order_completed.
+    tests:
+    - not_null
+    - unique
+  - name: payment_type
+    description: The payment_type of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: products
+    description: The products of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: revenue
+    description: The revenue of the events_base_order_completed.
+    tests: []
+  - name: shipping
+    description: The shipping of the events_base_order_completed.
+    tests: []
+  - name: status
+    description: The status of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: subtotal
+    description: The subtotal of the events_base_order_completed.
+    tests: []
+  - name: tax
+    description: The tax of the events_base_order_completed.
+    tests: []
+  - name: total
+    description: The total of the events_base_order_completed.
+    tests: []
+  - name: type
+    description: The type of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: value
+    description: The value of the events_base_order_completed.
+    tests: []
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_order_completed.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_order_completed.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: context_passed_ip
+    description: The context_passed_ip of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_order_completed.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_order_completed.
+    tests:
+    - not_null
+    - unique
+- name: events_base_order_updated
+  description: Table containing details for events_base_order_updated.
+  columns:
+  - name: affiliation
+    description: The affiliation of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: billing_address_address
+    description: The billing_address_address of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: billing_address_city
+    description: The billing_address_city of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: billing_address_country
+    description: The billing_address_country of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: billing_address_first_name
+    description: The billing_address_first_name of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: billing_address_last_name
+    description: The billing_address_last_name of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: billing_address_phone
+    description: The billing_address_phone of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: billing_address_postal_code
+    description: The billing_address_postal_code of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: billing_address_state
+    description: The billing_address_state of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: cart_id
+    description: The cart_id of the events_base_order_updated.
+    tests:
+    - not_null
+    - unique
+  - name: coupon
+    description: The coupon of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: currency
+    description: The currency of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: discount
+    description: The discount of the events_base_order_updated.
+    tests: []
+  - name: event_text
+    description: The event_text of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: order_id
+    description: The order_id of the events_base_order_updated.
+    tests:
+    - not_null
+    - unique
+  - name: payment_type
+    description: The payment_type of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: products
+    description: The products of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: revenue
+    description: The revenue of the events_base_order_updated.
+    tests: []
+  - name: shipping
+    description: The shipping of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: status
+    description: The status of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: subtotal
+    description: The subtotal of the events_base_order_updated.
+    tests: []
+  - name: tax
+    description: The tax of the events_base_order_updated.
+    tests: []
+  - name: total
+    description: The total of the events_base_order_updated.
+    tests: []
+  - name: type
+    description: The type of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: value
+    description: The value of the events_base_order_updated.
+    tests: []
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_order_updated.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_order_updated.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: context_passed_ip
+    description: The context_passed_ip of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_order_updated.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_order_updated.
+    tests:
+    - not_null
+    - unique
+- name: events_base_pages
+  description: Table containing details for events_base_pages.
+  columns:
+  - name: _hash
+    description: The _hash of the events_base_pages.
+    tests:
+    - not_null
+  - name: height
+    description: The height of the events_base_pages.
+    tests:
+    - not_null
+  - name: name
+    description: The name of the events_base_pages.
+    tests:
+    - not_null
+  - name: path
+    description: The path of the events_base_pages.
+    tests:
+    - not_null
+  - name: referrer
+    description: The referrer of the events_base_pages.
+    tests:
+    - not_null
+  - name: search
+    description: The search of the events_base_pages.
+    tests:
+    - not_null
+  - name: title
+    description: The title of the events_base_pages.
+    tests:
+    - not_null
+  - name: url
+    description: The url of the events_base_pages.
+    tests:
+    - not_null
+  - name: width
+    description: The width of the events_base_pages.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_pages.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_pages.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_page_hash
+    description: The context_page_hash of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_page_search
+    description: The context_page_search of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_campaign_medium
+    description: The context_campaign_medium of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_campaign_name
+    description: The context_campaign_name of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_campaign_gclid
+    description: The context_campaign_gclid of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_campaign_term
+    description: The context_campaign_term of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_campaign_source
+    description: The context_campaign_source of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_campaign_content
+    description: The context_campaign_content of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_campaign_profile
+    description: The context_campaign_profile of the events_base_pages.
+    tests:
+    - not_null
+  - name: context_campaign_id
+    description: The context_campaign_id of the events_base_pages.
+    tests:
+    - not_null
+    - unique
+  - name: event_id
+    description: The event_id of the events_base_pages.
+    tests:
+    - not_null
+    - unique
+- name: events_base_product_added
+  description: Table containing details for events_base_product_added.
+  columns:
+  - name: brand
+    description: The brand of the events_base_product_added.
+    tests:
+    - not_null
+  - name: category
+    description: The category of the events_base_product_added.
+    tests:
+    - not_null
+  - name: image_url
+    description: The image_url of the events_base_product_added.
+    tests:
+    - not_null
+  - name: name
+    description: The name of the events_base_product_added.
+    tests:
+    - not_null
+  - name: position
+    description: The position of the events_base_product_added.
+    tests:
+    - not_null
+  - name: price
+    description: The price of the events_base_product_added.
+    tests: []
+  - name: product_id
+    description: The product_id of the events_base_product_added.
+    tests:
+    - not_null
+    - unique
+  - name: quantity
+    description: The quantity of the events_base_product_added.
+    tests: []
+  - name: sku
+    description: The sku of the events_base_product_added.
+    tests:
+    - not_null
+  - name: url
+    description: The url of the events_base_product_added.
+    tests:
+    - not_null
+  - name: variant
+    description: The variant of the events_base_product_added.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_product_added.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_product_added.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_page_search
+    description: The context_page_search of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_campaign_gclid
+    description: The context_campaign_gclid of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_campaign_content
+    description: The context_campaign_content of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_campaign_medium
+    description: The context_campaign_medium of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_campaign_name
+    description: The context_campaign_name of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_campaign_source
+    description: The context_campaign_source of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_campaign_term
+    description: The context_campaign_term of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_page_hash
+    description: The context_page_hash of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_campaign_profile
+    description: The context_campaign_profile of the events_base_product_added.
+    tests:
+    - not_null
+  - name: context_campaign_id
+    description: The context_campaign_id of the events_base_product_added.
+    tests:
+    - not_null
+    - unique
+  - name: event_id
+    description: The event_id of the events_base_product_added.
+    tests:
+    - not_null
+    - unique
+- name: events_base_product_list_viewed
+  description: Table containing details for events_base_product_list_viewed.
+  columns:
+  - name: category
+    description: The category of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: list_id
+    description: The list_id of the events_base_product_list_viewed.
+    tests:
+    - not_null
+    - unique
+  - name: products
+    description: The products of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_product_list_viewed.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_product_list_viewed.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_name
+    description: The context_campaign_name of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_medium
+    description: The context_campaign_medium of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_page_search
+    description: The context_page_search of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_source
+    description: The context_campaign_source of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_term
+    description: The context_campaign_term of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_gclid
+    description: The context_campaign_gclid of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_content
+    description: The context_campaign_content of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_page_hash
+    description: The context_page_hash of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_profile
+    description: The context_campaign_profile of the events_base_product_list_viewed.
+    tests:
+    - not_null
+  - name: context_campaign_id
+    description: The context_campaign_id of the events_base_product_list_viewed.
+    tests:
+    - not_null
+    - unique
+  - name: event_id
+    description: The event_id of the events_base_product_list_viewed.
+    tests:
+    - not_null
+    - unique
+- name: events_base_product_removed
+  description: Table containing details for events_base_product_removed.
+  columns:
+  - name: position
+    description: The position of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_product_removed.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_product_removed.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_product_removed.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_product_removed.
+    tests:
+    - not_null
+    - unique
+- name: events_base_products_searched
+  description: Table containing details for events_base_products_searched.
+  columns:
+  - name: query
+    description: The query of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_products_searched.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_products_searched.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_page_search
+    description: The context_page_search of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_products_searched.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_products_searched.
+    tests:
+    - not_null
+    - unique
+- name: events_base_signed_up
+  description: Table containing details for events_base_signed_up.
+  columns:
+  - name: email
+    description: The email of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: first_name
+    description: The first_name of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: last_name
+    description: The last_name of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_signed_up.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_signed_up.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_signed_up.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_signed_up.
+    tests:
+    - not_null
+    - unique
+- name: events_base_subscription_activated
+  description: Table containing details for events_base_subscription_activated.
+  columns:
+  - name: charge_interval_frequency
+    description: The charge_interval_frequency of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: created_at
+    description: The created_at of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: has_queued_charges
+    description: The has_queued_charges of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: is_skippable
+    description: The is_skippable of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: is_swappable
+    description: The is_swappable of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: max_retries_reached
+    description: The max_retries_reached of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: next_charge_scheduled_at
+    description: The next_charge_scheduled_at of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_address
+    description: The order_billing_address_address of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_city
+    description: The order_billing_address_city of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_country
+    description: The order_billing_address_country of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_email
+    description: The order_billing_address_email of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_first_name
+    description: The order_billing_address_first_name of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_last_name
+    description: The order_billing_address_last_name of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_phone
+    description: The order_billing_address_phone of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_postal_code
+    description: The order_billing_address_postal_code of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_billing_address_state
+    description: The order_billing_address_state of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_coupon
+    description: The order_coupon of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_currency
+    description: The order_currency of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_discount
+    description: The order_discount of the events_base_subscription_activated.
+    tests: []
+  - name: order_id
+    description: The order_id of the events_base_subscription_activated.
+    tests:
+    - not_null
+    - unique
+  - name: order_interval_frequency
+    description: The order_interval_frequency of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_interval_unit
+    description: The order_interval_unit of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_order_id
+    description: The order_order_id of the events_base_subscription_activated.
+    tests:
+    - not_null
+    - unique
+  - name: order_products
+    description: The order_products of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_revenue
+    description: The order_revenue of the events_base_subscription_activated.
+    tests: []
+  - name: order_status
+    description: The order_status of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_subtotal
+    description: The order_subtotal of the events_base_subscription_activated.
+    tests: []
+  - name: order_tax
+    description: The order_tax of the events_base_subscription_activated.
+    tests: []
+  - name: order_total
+    description: The order_total of the events_base_subscription_activated.
+    tests: []
+  - name: order_type
+    description: The order_type of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: order_value
+    description: The order_value of the events_base_subscription_activated.
+    tests: []
+  - name: products
+    description: The products of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: sku_override
+    description: The sku_override of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: started_at
+    description: The started_at of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: status
+    description: The status of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: updated_at
+    description: The updated_at of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: user_id
+    description: The user_id of the events_base_subscription_activated.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_subscription_activated.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_subscription_activated.
+    tests:
+    - not_null
+    - unique
+- name: events_base_subscription_cancelled
+  description: Table containing details for events_base_subscription_cancelled.
+  columns:
+  - name: charge_interval_frequency
+    description: The charge_interval_frequency of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: created_at
+    description: The created_at of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: end_reason
+    description: The end_reason of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: ended_at
+    description: The ended_at of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: has_queued_charges
+    description: The has_queued_charges of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: is_skippable
+    description: The is_skippable of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: is_swappable
+    description: The is_swappable of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: max_retries_reached
+    description: The max_retries_reached of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_address
+    description: The order_billing_address_address of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_city
+    description: The order_billing_address_city of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_country
+    description: The order_billing_address_country of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_email
+    description: The order_billing_address_email of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_first_name
+    description: The order_billing_address_first_name of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_last_name
+    description: The order_billing_address_last_name of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_phone
+    description: The order_billing_address_phone of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_postal_code
+    description: The order_billing_address_postal_code of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_billing_address_state
+    description: The order_billing_address_state of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_cart_id
+    description: The order_cart_id of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+    - unique
+  - name: order_coupon
+    description: The order_coupon of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_currency
+    description: The order_currency of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_discount
+    description: The order_discount of the events_base_subscription_cancelled.
+    tests: []
+  - name: order_id
+    description: The order_id of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+    - unique
+  - name: order_interval_frequency
+    description: The order_interval_frequency of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_interval_unit
+    description: The order_interval_unit of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_order_id
+    description: The order_order_id of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+    - unique
+  - name: order_products
+    description: The order_products of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_revenue
+    description: The order_revenue of the events_base_subscription_cancelled.
+    tests: []
+  - name: order_status
+    description: The order_status of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_subtotal
+    description: The order_subtotal of the events_base_subscription_cancelled.
+    tests: []
+  - name: order_tax
+    description: The order_tax of the events_base_subscription_cancelled.
+    tests: []
+  - name: order_total
+    description: The order_total of the events_base_subscription_cancelled.
+    tests: []
+  - name: order_type
+    description: The order_type of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: order_value
+    description: The order_value of the events_base_subscription_cancelled.
+    tests: []
+  - name: products
+    description: The products of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: sku_override
+    description: The sku_override of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: started_at
+    description: The started_at of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: status
+    description: The status of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: updated_at
+    description: The updated_at of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: user_id
+    description: The user_id of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_subscription_cancelled.
+    tests:
+    - not_null
+    - unique
+- name: events_base_subscription_created
+  description: Table containing details for events_base_subscription_created.
+  columns:
+  - name: charge_interval_frequency
+    description: The charge_interval_frequency of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: created_at
+    description: The created_at of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: has_queued_charges
+    description: The has_queued_charges of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: is_skippable
+    description: The is_skippable of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: is_swappable
+    description: The is_swappable of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: max_retries_reached
+    description: The max_retries_reached of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: next_charge_scheduled_at
+    description: The next_charge_scheduled_at of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_address
+    description: The order_billing_address_address of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_city
+    description: The order_billing_address_city of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_country
+    description: The order_billing_address_country of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_email
+    description: The order_billing_address_email of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_first_name
+    description: The order_billing_address_first_name of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_last_name
+    description: The order_billing_address_last_name of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_phone
+    description: The order_billing_address_phone of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_postal_code
+    description: The order_billing_address_postal_code of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_billing_address_state
+    description: The order_billing_address_state of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_coupon
+    description: The order_coupon of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_currency
+    description: The order_currency of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_discount
+    description: The order_discount of the events_base_subscription_created.
+    tests: []
+  - name: order_id
+    description: The order_id of the events_base_subscription_created.
+    tests:
+    - not_null
+    - unique
+  - name: order_interval_frequency
+    description: The order_interval_frequency of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_interval_unit
+    description: The order_interval_unit of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_order_id
+    description: The order_order_id of the events_base_subscription_created.
+    tests:
+    - not_null
+    - unique
+  - name: order_products
+    description: The order_products of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_revenue
+    description: The order_revenue of the events_base_subscription_created.
+    tests: []
+  - name: order_status
+    description: The order_status of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_subtotal
+    description: The order_subtotal of the events_base_subscription_created.
+    tests: []
+  - name: order_tax
+    description: The order_tax of the events_base_subscription_created.
+    tests: []
+  - name: order_total
+    description: The order_total of the events_base_subscription_created.
+    tests: []
+  - name: order_type
+    description: The order_type of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: order_value
+    description: The order_value of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: products
+    description: The products of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: sku_override
+    description: The sku_override of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: started_at
+    description: The started_at of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: status
+    description: The status of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: updated_at
+    description: The updated_at of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: user_id
+    description: The user_id of the events_base_subscription_created.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_subscription_created.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_subscription_created.
+    tests:
+    - not_null
+    - unique
+- name: events_base_tracks
+  description: Table containing details for events_base_tracks.
+  columns:
+  - name: event
+    description: The event of the events_base_tracks.
+    tests:
+    - not_null
+  - name: event_text
+    description: The event_text of the events_base_tracks.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_tracks.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_tracks.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_tracks.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_tracks.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_tracks.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_tracks.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_tracks.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_tracks.
+    tests:
+    - not_null
+  - name: context_passed_ip
+    description: The context_passed_ip of the events_base_tracks.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_tracks.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_tracks.
+    tests:
+    - not_null
+    - unique
+- name: events_base_users
+  description: Table containing details for events_base_users.
+  columns:
+  - name: address_city
+    description: The address_city of the events_base_users.
+    tests:
+    - not_null
+  - name: address_country_code
+    description: The address_country_code of the events_base_users.
+    tests:
+    - not_null
+  - name: address_postal_code
+    description: The address_postal_code of the events_base_users.
+    tests:
+    - not_null
+  - name: address_state
+    description: The address_state of the events_base_users.
+    tests:
+    - not_null
+  - name: address_street
+    description: The address_street of the events_base_users.
+    tests:
+    - not_null
+  - name: addresses
+    description: The addresses of the events_base_users.
+    tests:
+    - not_null
+  - name: created_at
+    description: The created_at of the events_base_users.
+    tests:
+    - not_null
+  - name: email
+    description: The email of the events_base_users.
+    tests:
+    - not_null
+  - name: external_customer_id
+    description: The external_customer_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: first_name
+    description: The first_name of the events_base_users.
+    tests:
+    - not_null
+  - name: last_name
+    description: The last_name of the events_base_users.
+    tests:
+    - not_null
+  - name: name
+    description: The name of the events_base_users.
+    tests:
+    - not_null
+  - name: phone
+    description: The phone of the events_base_users.
+    tests:
+    - not_null
+  - name: anonymous_id
+    description: The anonymous_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+  - name: user_id
+    description: The user_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+  - name: context_passed_ip
+    description: The context_passed_ip of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_email
+    description: The context_traits_email of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_first_name
+    description: The context_traits_first_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_library_name
+    description: The context_library_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_phone
+    description: The context_traits_phone of the events_base_users.
+    tests:
+    - not_null
+  - name: context_user_agent
+    description: The context_user_agent of the events_base_users.
+    tests:
+    - not_null
+  - name: context_source
+    description: The context_source of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_external_customer_id
+    description: The context_traits_external_customer_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+    - relationships:
+        to: ref("customers")
+        field: customer_id
+  - name: context_traits_created_at
+    description: The context_traits_created_at of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_last_name
+    description: The context_traits_last_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_locale
+    description: The context_locale of the events_base_users.
+    tests:
+    - not_null
+  - name: context_library_version
+    description: The context_library_version of the events_base_users.
+    tests:
+    - not_null
+  - name: context_ip
+    description: The context_ip of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_address_country_code
+    description: The context_traits_address_country_code of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_name
+    description: The context_traits_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_address_city
+    description: The context_traits_address_city of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_anonymous_id
+    description: The context_traits_context_anonymous_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_address_street
+    description: The context_traits_address_street of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_address_state
+    description: The context_traits_address_state of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_client_id
+    description: The context_traits_context_client_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_address_postal_code
+    description: The context_traits_address_postal_code of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_ip
+    description: The context_traits_context_ip of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_session_id
+    description: The context_traits_context_session_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_addresses
+    description: The context_traits_addresses of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_page_title
+    description: The context_traits_context_page_title of the events_base_users.
+    tests:
+    - not_null
+  - name: context_page_width
+    description: The context_page_width of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_page_url
+    description: The context_traits_context_page_url of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_referrer
+    description: The context_traits_context_referrer of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_os_name
+    description: The context_traits_context_os_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_locale
+    description: The context_traits_context_locale of the events_base_users.
+    tests:
+    - not_null
+  - name: context_page_referrer
+    description: The context_page_referrer of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_library_name
+    description: The context_traits_context_library_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_os_name
+    description: The context_os_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_page_path
+    description: The context_page_path of the events_base_users.
+    tests:
+    - not_null
+  - name: context_page_height
+    description: The context_page_height of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_initialized
+    description: The context_traits_context_initialized of the events_base_users.
+    tests:
+    - not_null
+  - name: context_page_search
+    description: The context_page_search of the events_base_users.
+    tests:
+    - not_null
+  - name: context_debug
+    description: The context_debug of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_app
+    description: The context_traits_context_app of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_page_referrer
+    description: The context_traits_context_page_referrer of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_page_search
+    description: The context_traits_context_page_search of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_library_version
+    description: The context_traits_context_library_version of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_debug
+    description: The context_traits_context_debug of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_user_agent
+    description: The context_traits_context_user_agent of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_timezone
+    description: The context_traits_context_timezone of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_offline
+    description: The context_traits_context_offline of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_page_height
+    description: The context_traits_context_page_height of the events_base_users.
+    tests:
+    - not_null
+  - name: context_timezone
+    description: The context_timezone of the events_base_users.
+    tests:
+    - not_null
+  - name: context_referrer
+    description: The context_referrer of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_page_path
+    description: The context_traits_context_page_path of the events_base_users.
+    tests:
+    - not_null
+  - name: context_page_title
+    description: The context_page_title of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_page_width
+    description: The context_traits_context_page_width of the events_base_users.
+    tests:
+    - not_null
+  - name: context_page_url
+    description: The context_page_url of the events_base_users.
+    tests:
+    - not_null
+  - name: context_campaign_gclid
+    description: The context_campaign_gclid of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_gclid
+    description: The context_traits_context_campaign_gclid of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_page_hash
+    description: The context_traits_context_page_hash of the events_base_users.
+    tests:
+    - not_null
+  - name: context_page_hash
+    description: The context_page_hash of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_source
+    description: The context_traits_context_campaign_source of the events_base_users.
+    tests:
+    - not_null
+  - name: context_campaign_term
+    description: The context_campaign_term of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_name
+    description: The context_traits_context_campaign_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_campaign_source
+    description: The context_campaign_source of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_medium
+    description: The context_traits_context_campaign_medium of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_term
+    description: The context_traits_context_campaign_term of the events_base_users.
+    tests:
+    - not_null
+  - name: context_campaign_medium
+    description: The context_campaign_medium of the events_base_users.
+    tests:
+    - not_null
+  - name: context_campaign_name
+    description: The context_campaign_name of the events_base_users.
+    tests:
+    - not_null
+  - name: context_campaign_profile
+    description: The context_campaign_profile of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_profile
+    description: The context_traits_context_campaign_profile of the events_base_users.
+    tests:
+    - not_null
+  - name: context_traits_context_campaign_id
+    description: The context_traits_context_campaign_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+  - name: context_campaign_id
+    description: The context_campaign_id of the events_base_users.
+    tests:
+    - not_null
+    - unique
+  - name: context_traits_context_campaign_content
+    description: The context_traits_context_campaign_content of the events_base_users.
+    tests:
+    - not_null
+  - name: context_campaign_content
+    description: The context_campaign_content of the events_base_users.
+    tests:
+    - not_null
+- name: events_base_cart_line_items
+  description: Table containing details for events_base_cart_line_items.
+  columns:
+  - name: event_type
+    description: The event_type of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_cart_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: cart_id
+    description: The cart_id of the events_base_cart_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: brand
+    description: The brand of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: category
+    description: The category of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: imageurl
+    description: The imageurl of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: name
+    description: The name of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: position
+    description: The position of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: price
+    description: The price of the events_base_cart_line_items.
+    tests: []
+  - name: product_id
+    description: The product_id of the events_base_cart_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: quantity
+    description: The quantity of the events_base_cart_line_items.
+    tests: []
+  - name: sku
+    description: The sku of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: url
+    description: The url of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: variant
+    description: The variant of the events_base_cart_line_items.
+    tests:
+    - not_null
+  - name: unnested_product_column
+    description: The unnested_product_column of the events_base_cart_line_items.
+    tests:
+    - not_null
+- name: events_base_checkout_line_items
+  description: Table containing details for events_base_checkout_line_items.
+  columns:
+  - name: event_type
+    description: The event_type of the events_base_checkout_line_items.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_checkout_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: cart_id
+    description: The cart_id of the events_base_checkout_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_checkout_line_items.
+    tests:
+    - not_null
+  - name: is_refunded
+    description: The is_refunded of the events_base_checkout_line_items.
+    tests:
+    - not_null
+  - name: line_item_id
+    description: The line_item_id of the events_base_checkout_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: name
+    description: The name of the events_base_checkout_line_items.
+    tests:
+    - not_null
+  - name: position
+    description: The position of the events_base_checkout_line_items.
+    tests:
+    - not_null
+  - name: price
+    description: The price of the events_base_checkout_line_items.
+    tests: []
+  - name: product_id
+    description: The product_id of the events_base_checkout_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: quantity
+    description: The quantity of the events_base_checkout_line_items.
+    tests: []
+  - name: sku
+    description: The sku of the events_base_checkout_line_items.
+    tests:
+    - not_null
+  - name: variant
+    description: The variant of the events_base_checkout_line_items.
+    tests:
+    - not_null
+  - name: unnested_product_column
+    description: The unnested_product_column of the events_base_checkout_line_items.
+    tests:
+    - not_null
+- name: events_base_order_line_items
+  description: Table containing details for events_base_order_line_items.
+  columns:
+  - name: event_type
+    description: The event_type of the events_base_order_line_items.
+    tests:
+    - not_null
+  - name: order_id
+    description: The order_id of the events_base_order_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_order_line_items.
+    tests:
+    - not_null
+  - name: is_refunded
+    description: The is_refunded of the events_base_order_line_items.
+    tests:
+    - not_null
+  - name: line_item_id
+    description: The line_item_id of the events_base_order_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: name
+    description: The name of the events_base_order_line_items.
+    tests:
+    - not_null
+  - name: position
+    description: The position of the events_base_order_line_items.
+    tests:
+    - not_null
+  - name: price
+    description: The price of the events_base_order_line_items.
+    tests: []
+  - name: product_id
+    description: The product_id of the events_base_order_line_items.
+    tests:
+    - not_null
+    - unique
+  - name: quantity
+    description: The quantity of the events_base_order_line_items.
+    tests: []
+  - name: sku
+    description: The sku of the events_base_order_line_items.
+    tests:
+    - not_null
+  - name: variant
+    description: The variant of the events_base_order_line_items.
+    tests:
+    - not_null
+  - name: unnested_product_column
+    description: The unnested_product_column of the events_base_order_line_items.
+    tests:
+    - not_null
+- name: events_base_product_list_viewed_products
+  description: Table containing details for events_base_product_list_viewed_products.
+  columns:
+  - name: event_type
+    description: The event_type of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: event_id
+    description: The event_id of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+    - unique
+  - name: original_timestamp
+    description: The original_timestamp of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: list_id
+    description: The list_id of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+    - unique
+  - name: brand
+    description: The brand of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: category
+    description: The category of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: imageurl
+    description: The imageurl of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: name
+    description: The name of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: position
+    description: The position of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: price
+    description: The price of the events_base_product_list_viewed_products.
+    tests: []
+  - name: product_id
+    description: The product_id of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+    - unique
+  - name: quantity
+    description: The quantity of the events_base_product_list_viewed_products.
+    tests: []
+  - name: sku
+    description: The sku of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: url
+    description: The url of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: variant
+    description: The variant of the events_base_product_list_viewed_products.
+    tests:
+    - not_null
+  - name: unnested_product_column
+    description: The unnested_product_column of the events_base_product_list_viewed_products.
+    tests:
+    - not_null

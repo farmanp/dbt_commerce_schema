@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "dbt-commerce-schema"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <your_email@example.com>"]
+readme = "README.md"
+packages = [{include = "dbt_commerce_schema"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+dbt-core = "^1.7.11"
+dbt-clickhouse = "^1.7.6"
+dbt-common = "^1.0.1"
+cube_dbt = "^0.6.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.0"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
